@@ -9,7 +9,7 @@
 <b>Discipline | <b> Mechanical Engineering 
 :--|:--|
 <b> Lab | <b> **Mechanisms and Robotics Lab**
-<b> Experiment|     <b> **Iinverse Kinematics of PUMA 560 and Experiment 3**
+<b> Experiment|     <b> **Inverse Kinematics of PUMA 560 and Experiment 3**
 
 
 ### Subject matter expert 
