@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="./js/mathjs/math.js"></script>
+        <script src="./js/mathjs/math.min.js"></script>
+        <script src="./js/plotly-latest.min.js"></script>
+        <script type="text/javascript" async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+
+        <script src="./js/tmat.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+        <script type="text/javascript" src="./js/threejs/three.min.js"></script>
+        <script type="text/javascript" src="./js/threejs/TrackballControls.js"></script>
+        <script type="text/javascript" src="./js/threejs/Detector.js"></script>
+        <script type="text/javascript" src="./js/threejs/stats.min.js"></script> 
+
+        <script type="text/javascript" src="./js/axis.js"></script>
+        <script type="text/javascript" src="js/PUMA_scene.js"></script>
+        <script type="text/javascript" src="./js/controller.js"></script>
+
+        <script src="fonts/gentilis_bold.typeface.js"></script>
+        <script src="fonts/gentilis_regular.typeface.js"></script>
+        <script src="fonts/optimer_bold.typeface.js"></script>
+        <script src="fonts/optimer_regular.typeface.js"></script>
+        <script src="fonts/helvetiker_bold.typeface.js"></script>
+        <script src="fonts/helvetiker_regular.typeface.js"></script>
+        <script src="fonts/droid_sans_regular.typeface.js"></script>
+        <script src="fonts/droid_sans_bold.typeface.js"></script>
+        <script src="fonts/droid_serif_regular.typeface.js"></script>
+        <script src="fonts/droid_serif_bold.typeface.js"></script>
+
+    </head>
+    <body onload="myFunction()">
+        <div class="logo" id="experiment-header-logo">
+            <img src="./images/logo.jpg" style=" width: 970px; height:100px">
+        </div>
+        <div id="main-wrapper" >
+            <div id="input-wrapper" >
+                <div id="input-title">Input Panel</div>            
+                <div id="input-view">
+                    <fieldset> 
+                        <legend><b>Input Values</b></legend>
+                        <table border="1">
+                            <tr><td>n<sub>x</sub></td> <td><input type="text" name="size1" size="2"  value="0.707" id="n1"></td>
+                                <td>s<sub>x</sub></td> <td><input type="text" name="size1" size="2"  value="0.707" id="s1">
+                                <td>a<sub>x</sub></td> <td><input type="text" name="size1" size="2"  value="0" id="a1">
+                                <td>p<sub>1</sub></td> <td><input type="text" name="size1" size="2"  value="0.125" id="p1">
+                            </tr>
+                            <tr><td>n<sub>y</sub></td> <td><input type="text" name="size2" size="2"  value="0.707" id="n2"></td>
+                                <td>s<sub>y</sub></td> <td><input type="text" name="size1" size="2"  value="-0.707" id="s2">
+                                <td>a<sub>y</sub></td> <td><input type="text" name="size1" size="2"  value="0" id="a2">
+                                <td>p<sub>2</sub></td> <td><input type="text" name="size2" size="2"  value="0.336" id="p2"></td>
+                            </tr>
+                            <tr><td>n<sub>z</sub></td> <td><input type="text" name="size3" size="2"  value="0" id="n3"></td>
+                                <td>s<sub>z</sub></td> <td><input type="text" name="size1" size="2"  value="0" id="s3">
+                                <td>a<sub>z</sub></td> <td><input type="text" name="size1" size="2"  value="-1" id="a3">
+                                <td>p<sub>3</sub></td> <td><input type="text" name="size3" size="2"  value="-0.737" id="p3"></td>
+                            </tr>
+                            <tr><td colspan ="6" align = "center"><input type="button" value="OK" onclick="myFunction()"></td></tr>
+                        </table> 
+                    </fieldset>
+                    <center><fieldset> 
+                            <legend><b>Joint Solutions</b></legend>
+                            <table  style="float: left;" border="1">
+                                <tr><td width="30"><b>`theta_1`</b></td> <td><input type="text" name="size1" size="2"  value="0" id="th1"></td></tr>
+                                <tr><td><b>`theta_2`</b></td> <td><input type="text" name="size2" size="2"  value="0" id="th2"></td></tr>
+                                <tr><td><b>`theta_3`</b></td> <td><input type="text" name="size3" size="2"  value="0" id="th3"></td></tr>
+                                <tr><td><b>`theta_4`</b></td> <td><input type="text" name="size4" size="2"  value="0" id="th4"></td></tr>
+                                <tr><td><b>`theta_5`</b></td> <td><input type="text" name="size5" size="2"  value="0" id="th5"></td></tr>
+                                <tr><td><b>`theta_6`</b></td> <td><input type="text" name="size6" size="2"  value="0" id="th6"></td></tr>
+                                <tr><td colspan ="6" align = "center"><input type="button" value="Solution 1" onclick="solution1()"></td></tr>
+                            </table>
+
+                            <table  style="padding-left: 10px; float: top;" border="1">
+
+                                <tr><td width="30"><b>`theta_1`</b></td> <td><input type="text" name="size1" size="2"  value="0" id="th1_1"></td></tr>
+                                <tr><td><b>`theta_2`</b></td> <td><input type="text" name="size2" size="2"  value="0" id="th2_1"></td></tr>
+                                <tr><td><b>`theta_3`</b></td> <td><input type="text" name="size3" size="2"  value="0" id="th3_1"></td></tr>
+                                <tr><td><b>`theta_4`</b></td> <td><input type="text" name="size4" size="2"  value="0" id="th4_1"></td></tr>
+                                <tr><td><b>`theta_5`</b></td> <td><input type="text" name="size5" size="2"  value="0" id="th5_1"></td></tr>
+                                <tr><td><b>`theta_6`</b></td> <td><input type="text" name="size6" size="2"  value="0" id="th6_1"></td></tr>
+                                <tr><td colspan ="6" align = "center"><input type="button" value="Solution 2" onclick="solution2()"></td></tr>
+                            </table> 
+                            <br>
+                            <table  style="float: left;" border="1">
+
+                                <tr><td width="30"><b>`theta_1`</b></td> <td><input type="text" name="size1" size="2"  value="0" id="th1_2"></td></tr>
+                                <tr><td><b>`theta_2`</b></td> <td><input type="text" name="size2" size="2"  value="0" id="th2_2"></td></tr>
+                                <tr><td><b>`theta_3`</b></td> <td><input type="text" name="size3" size="2"  value="0" id="th3_2"></td></tr>
+                                <tr><td><b>`theta_4`</b></td> <td><input type="text" name="size4" size="2"  value="0" id="th4_2"></td></tr>
+                                <tr><td><b>`theta_5`</b></td> <td><input type="text" name="size5" size="2"  value="0" id="th5_2"></td></tr>
+                                <tr><td><b>`theta_6`</b></td> <td><input type="text" name="size6" size="2"  value="0" id="th6_2"></td></tr>
+                                <tr><td colspan ="6" align = "center"><input type="button" value="Solution 3" onclick="solution3()"></td></tr>
+                            </table>
+                            <table  style="padding-left: 10px; float: top;" border="1">
+
+                                <tr><td width="30"><b>`theta_1`</b></td> <td><input type="text" name="size1" size="2"  value="0" id="th1_3"></td></tr>
+                                <tr><td><b>`theta_2`</b></td> <td><input type="text" name="size2" size="2"  value="0" id="th2_3"></td></tr>
+                                <tr><td><b>`theta_3`</b></td> <td><input type="text" name="size3" size="2"  value="0" id="th3_3"></td></tr>
+                                <tr><td><b>`theta_4`</b></td> <td><input type="text" name="size4" size="2"  value="0" id="th4_3"></td></tr>
+                                <tr><td><b>`theta_5`</b></td> <td><input type="text" name="size5" size="2"  value="0" id="th5_3"></td></tr>
+                                <tr><td><b>`theta_6`</b></td> <td><input type="text" name="size6" size="2"  value="0" id="th6_3"></td></tr>
+                                <tr><td colspan ="6" align = "center"><input type="button" value="Solution 4" onclick="solution4()"></td></tr>
+                            </table> 
+                        </fieldset></center>
+
+                </div>
+            </div><!-- End of Input wrapper-->
+            <div id="canvas3d-wrapper">
+                <div id="canvas3d-title">Simulator</div>            
+                <div id="canvas3d-view"></div>                       
+            </div><!-- End of canvas3d wrapper-->
+        </div><!-- End of main wrapper--> 
+        <footer class="default" id="lab-footer">
+            <!-- Put the content here-->
+            <div style="margin-left:40%; margin-right:40% ">
+                Copyright &copy; 2011 Indian Institute of Technology Kharagpur,<a href="../license/index.html" target="_blank" style="margin:auto"> Licensing Terms </a>
+            </div>
+        </footer>
+    </body>
+
+</html>
