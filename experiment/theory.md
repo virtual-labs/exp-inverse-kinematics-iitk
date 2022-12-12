@@ -6,7 +6,7 @@ Inverse kinematics problem deals with the determination of joint variables given
 Given the end-effector position and orientation from Forward kinematics problem, the inverse kinematics approach is used to obtain the joint angles. But as stated in the introduction inverse kinematics is more difficult problem than forward kinematics as its include much complexity. The relationship between forward and inverse kinematics is shown in Figure 1. In general there are two main solution techniques for inverse kinematics problem one is analytic approach and other is numerical method. Analytic approach comprises of geometric and algebraic solutions in which joint variables are solved analytically according to given configuration data.
 
 <center>
-<img src="./images/puma_23.PNG">
+<img src="./images/puma_23.PNG" width="35%">
 
 ***Figure 1. The schematic representation of forward and inverse kinematics.***
 </center>
